@@ -62,8 +62,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             $cpassword_error=$cpassword_array[0];
         }
     // Listen datebase name is For and table name is signup hosted on localhost
-        if(empty($cpassword_error && $password_error && $username_error && $email_error && $lname_error && $fname_error) 
-           && isset($fname) && isset($lname) && isset($email) && isset($username) && isset($password)){
+        if(empty($cpassword_error) && empty($password_error) && empty($username_error) && empty($email_error) && empty($lname_error) && empty($fname_error) 
+        && isset($fname) && isset($lname) && isset($email) && isset($username) && isset($password)){
             // Error found if user put email that is already in database
                 $validate_mysqli_array=["Email already exist", "Username already Exist"];
                 $validate_email_query= "SELECT * from signup where (email='$email')";
@@ -77,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 if(mysqli_num_rows($validate_username_mysql_query)>0){
                     $username_error_signup=$validate_mysqli_array[1];
                 }
-                if(empty($username_error_signup && $email_error_signup)){
+                if(empty($username_error_signup) && empty($email_error_signup)){
                     // Encript password using argon2i
                     $password_encript_signup=password_hash($password, PASSWORD_ARGON2I);
                     if($password_encript_signup){
