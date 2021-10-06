@@ -5,6 +5,7 @@ $email_error_signup=$username_error_signup="";
 $name_error=$email_error=$username_error=$password_error=$cpassword_error=$phoneno_error=$gender_error="";
 $name=$email=$username=$password=$phoneno=$gender="";
     if($_SERVER["REQUEST_METHOD"]=="POST"){
+       // values get from form
         $name=$_POST["name"];
         $email=$_POST["email"];
         $phoneno=$_POST["phoneno"];
@@ -12,17 +13,24 @@ $name=$email=$username=$password=$phoneno=$gender="";
         $password=$_POST["password"];
         $cpassword=$_POST["cpassword"];
         $name_array=["Name is required", "Only letter & White spaces allowed"];
+       // name validation 
         if(empty($name)){
         $name_error=$name_array[0];
         }elseif(!preg_match("/^[a-zA-Z-' ]*$/",$name)){
             $name_error="$name_array[1]";
         }
+         /* Email validation
+        (1): An error found when User don't fill email section in signup form
+        (2): Another error found when user Enter Invalid email address
+        */ 
         $email_array=["Email is required", "Invalid Email"];
         if(empty($email)){
             $email_error=$email_array[0];
         }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
             $email_error=$email_array[1];
         }
+        // Username validation
+        // Error found when user put short username(length=6 or bigger), if don't enter username and if user fill username value other than character.
         $username_array=["Username is required", "Username is Short", "Username Contain only letters"];
         if(empty($username)){
             $username_error=$username_array[0];
@@ -40,6 +48,7 @@ $name=$email=$username=$password=$phoneno=$gender="";
         }elseif(!preg_match('/^[0-9]*$/', $phoneno)){
             $phoneno_error=$phoneno_array[1];
         }
+        // password validation
         $password_array=["Password is required", "Password is Short"];
         if(empty($password)){
             $password_error=$password_array[0];
