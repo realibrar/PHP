@@ -1,0 +1,44 @@
+p.red {
+    color:red;
+}
+p.border{
+    border-style: dotted;
+}
+pre.pre{
+    border-bottom-style: dotted;
+    border-top-style:dashed;
+    border-right-style:solid ;
+    border-left-style: double;
+    border-radius: 60px;
+}
+/*
+.href{
+    color:white;
+    border-style: solid;
+    border-width: 10px;
+    border-color:green;
+    border-radius: 10px;
+    background-color: green;
+    text-decoration: none;
+    text-align: center;
+    margin-left: 500px;
+
+}
+*/
+a.href{
+    color:yellow;
+    background-color:aqua;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 500px;
+    font-size: 16px;
+
+
+}
+body {
+    background-image: url('./a.png');
+    background-repeat:no-repeat;
+    background-position:right top;
+    background-attachment: fixed;
+}
